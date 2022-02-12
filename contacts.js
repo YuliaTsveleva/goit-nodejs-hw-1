@@ -3,9 +3,7 @@ const path = require("path");
 const { nanoid } = require("nanoid");
 
 const contactsPath = path.join(__dirname, "db/contacts.json");
-// console.log(__dirname);
 
-// TODO: задокументировать каждую функцию
 const listContacts = async () => {
   const data = await fs.readFile(contactsPath);
   const contacts = JSON.parse(data);

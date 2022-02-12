@@ -1,5 +1,4 @@
 const contactsOperations = require("./contacts");
-// const argv = require("yargs").argv;
 
 const { Command } = require("commander");
 const program = new Command();
@@ -14,7 +13,6 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: рефакторить
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
@@ -62,26 +60,3 @@ async function invokeAction({ action, id, name, email, phone }) {
 }
 
 invokeAction(argv);
-
-// const newData = {
-//   name: "Sherlock Holmes",
-//   email: "baker-street@gmail.com",
-//   phone: "(111) 111-1111",
-// };
-
-// const updateId = "Dw-8nhp-R24AhF3qp6lYi";
-// const updatedData = {
-//   name: "Sherlock Holmes",
-//   email: "baker-street-221b@gmail.com",
-//   phone: "(222) 222-2222",
-// };
-
-// const removeId = "Dw-8nhp-R24AhF3qp6lYi";
-
-// invokeAction({
-//   action: "update",
-//   id: "QX8YRotT3vg1zDO786nT4",
-//   name: "Sherlock Holmes",
-//   email: "baker-street-221b@gmail.com",
-//   phone: "111-11-11",
-// });
