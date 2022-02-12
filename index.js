@@ -1,6 +1,19 @@
 const contactsOperations = require("./contacts");
 // const argv = require("yargs").argv;
 
+const { Command } = require("commander");
+const program = new Command();
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse(process.argv);
+
+const argv = program.opts();
+
 // TODO: рефакторить
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
@@ -48,7 +61,7 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-// invokeAction(argv);
+invokeAction(argv);
 
 // const newData = {
 //   name: "Sherlock Holmes",
