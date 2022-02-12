@@ -2,7 +2,7 @@ const contactsOperations = require("./contacts");
 // const argv = require("yargs").argv;
 
 // TODO: рефакторить
-async function invokeAction({ action, id, data }) {
+async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const contacts = await contactsOperations.listContacts();
@@ -18,14 +18,20 @@ async function invokeAction({ action, id, data }) {
       break;
 
     case "add":
-      const newContact = await contactsOperations.addContact(data);
+      const newContact = await contactsOperations.addContact(
+        name,
+        email,
+        phone
+      );
       console.log(newContact);
       break;
 
     case "update":
       const updatedContact = await contactsOperations.updateContactById(
         id,
-        data
+        name,
+        email,
+        phone
       );
       if (!updatedContact) {
         throw new Error(`Contact witn ${id} not found`);
@@ -57,6 +63,12 @@ async function invokeAction({ action, id, data }) {
 //   phone: "(222) 222-2222",
 // };
 
-const removeId = "Dw-8nhp-R24AhF3qp6lYi";
+// const removeId = "Dw-8nhp-R24AhF3qp6lYi";
 
-invokeAction({ action: "remove", id: removeId });
+// invokeAction({
+//   action: "update",
+//   id: "QX8YRotT3vg1zDO786nT4",
+//   name: "Sherlock Holmes",
+//   email: "baker-street-221b@gmail.com",
+//   phone: "111-11-11",
+// });
